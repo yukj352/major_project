@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; // ✅ ADD THIS
 
 function Login() {
   const navigate = useNavigate();
@@ -14,45 +15,49 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // 🔥 UPDATED LOGIN FUNCTION
   const handleLogin = async () => {
-  try {
-    const res = await axios.post("http://localhost:5000/login", form);
+    try {
+      const res = await axios.post("http://localhost:5000/login", form);
 
-    // ✅ store userId (temporary for now)
-    localStorage.setItem("userId", 1);
+      // ✅ Store full user object
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
-    alert("Login successful ✅");
+      // 🔔 Toast notification
+      toast.success("Login successful ✅");
 
-    navigate("/dashboard");
+      // ⏳ Delay navigation
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
 
-  } catch (err) {
-    alert("Login failed ❌");
-  }
-};
+    } catch (err) {
+      console.error(err);
+      toast.error("Login failed ❌");
+    }
+  };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Login</h2>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter Email"
-        onChange={handleChange}
-      />
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          onChange={handleChange}
+        />
 
-      <br /><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          onChange={handleChange}
+        />
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Enter Password"
-        onChange={handleChange}
-      />
-
-      <br /><br />
-
-      <button onClick={handleLogin}>Login</button>
+        <button onClick={handleLogin}>Login</button>
+      </div>
     </div>
   );
 }

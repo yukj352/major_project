@@ -1,0 +1,174 @@
+.chatbot-container {
+  width: 330px;
+  height: 480px;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 🛡️ Header */
+.chat-header {
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  border-bottom: 1px solid #334155;
+}
+
+/* 💬 Chatbox */
+.chatbox {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar */
+.chatbox::-webkit-scrollbar {
+  width: 5px;
+}
+.chatbox::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 10px;
+}
+
+/* 💬 Messages */
+.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 10px 12px;
+  border-radius: 14px 14px 2px 14px;
+  margin: 6px 0;
+  max-width: 75%;
+  font-size: 14px;
+  animation: slideRight 0.2s ease;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 10px 12px;
+  border-radius: 14px 14px 14px 2px;
+  margin: 6px 0;
+  max-width: 75%;
+  font-size: 14px;
+  animation: slideLeft 0.2s ease;
+}
+
+/* 🚨 Emergency glow */
+.bot:has(span.emergency) {
+  border: 1px solid #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+/* 🎯 Options */
+.options-container {
+  margin-top: 10px;
+}
+
+.option-btn {
+  margin: 5px 5px 0 0;
+  padding: 7px 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+/* Button types */
+.option-btn.normal {
+  background: #6366f1;
+  color: white;
+}
+
+.option-btn.emergency {
+  background: #ef4444;
+  color: white;
+}
+
+.option-btn:hover {
+  transform: scale(1.07);
+  opacity: 0.9;
+}
+
+/* ⌨️ Input */
+.input-area {
+  display: flex;
+  border-top: 1px solid #334155;
+  background: #020617;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+
+.input-area input::placeholder {
+  color: #94a3b8;
+}
+
+.input-area button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.input-area button:hover {
+  opacity: 0.85;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

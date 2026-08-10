@@ -1,0 +1,115 @@
+/* 🌌 BACKGROUND */
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  text-align: center;
+
+  /* ✨ ANIMATION */
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* 🎬 FADE ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🧾 TITLE */
+.dashboard-container h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* 🚨 SOS BUTTON */
+.sos-btn {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: white;
+
+  padding: 15px 40px;
+  font-size: 18px;
+
+  border: none;
+  border-radius: 12px;
+
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  box-shadow: 0 5px 20px rgba(255, 75, 43, 0.4);
+
+  transition: 0.3s;
+}
+
+.sos-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(255, 75, 43, 0.6);
+}
+
+/* 📦 FORM BOX */
+.form-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+
+  padding: 30px;
+  border-radius: 16px;
+
+  width: 350px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 🧾 FORM TITLE */
+.form-box h3 {
+  margin-bottom: 20px;
+}
+
+/* ✏️ INPUTS */
+.form-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+
+  border-radius: 8px;
+  border: none;
+
+  outline: none;
+}
+
+/* ✨ INPUT FOCUS */
+.form-box input:focus {
+  box-shadow: 0 0 5px rgba(255, 75, 43, 0.5);
+}
+
+/* ➕ BUTTON */
+.form-box button {
+  width: 100%;
+  padding: 12px;
+
+  background: #4a90e2;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  margin-top: 10px;
+
+  transition: 0.3s;
+}
+
+.form-box button:hover {
+  background: #357abd;
+  transform: scale(1.03);
+}

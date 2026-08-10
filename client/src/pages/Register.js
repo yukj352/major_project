@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
+import { toast } from "react-toastify";
 
 function Register() {
   const navigate = useNavigate();
@@ -19,44 +21,42 @@ function Register() {
     try {
       await axios.post("http://localhost:5000/register", form);
 
-      alert("Registered successfully ✅");
-      navigate("/");
+      toast.success("Registered successfully ✅");
+      navigate("/login");
 
     } catch (err) {
-      alert("Registration failed ❌");
+      toast.error("Registration failed ❌");
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Register</h2>
 
-      <input
-        name="name"
-        placeholder="Enter Name"
-        onChange={handleChange}
-      />
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          onChange={handleChange}
+        />
 
-      <br /><br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          onChange={handleChange}
+        />
 
-      <input
-        name="email"
-        placeholder="Enter Email"
-        onChange={handleChange}
-      />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          onChange={handleChange}
+        />
 
-      <br /><br />
-
-      <input
-        type="password"
-        name="password"
-        placeholder="Enter Password"
-        onChange={handleChange}
-      />
-
-      <br /><br />
-
-      <button onClick={handleRegister}>Register</button>
+        <button onClick={handleRegister}>Register</button>
+      </div>
     </div>
   );
 }
